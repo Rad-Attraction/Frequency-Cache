@@ -1,6 +1,6 @@
 # Frequency-Cache
 
-##Save python dicts as json files while caching the most frequent items in memory.
+## Save python dicts as json files while caching the most frequent items in memory.
 
 Just storing data in a dictionary object, 
 we can save and load as json easily when the program wakes and shuts down.
