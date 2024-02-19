@@ -6,27 +6,18 @@ class Frequency_Cache:
     """
     Represents a caching system to retrieve json files from a directory.
     It stores a certain number of objects before evicting the least
-    frequently accessed item from the cache.
+    frequently accessed item from memory.
 
     Can specify a unique path and max size.
     Can specify static or non-static.
     non-static caches will save their data 
     to its file before decaching it.
-    
-    The intent of this class is to unload data from ram when not in use.
-    the problem is, 
-    i havent quite tested it against just keeping shit in ram lol
-    for all i know it could just be pure overhead
-    To test this i would want to generate a series of dummy databases
-    of varying sizes, and varying distributions of access frequencies
-    and then i might get a clue as to the sizes for which 
-    this class is better than just keeping the whole thing in ram.
-    
-    Problems: 
-    keys are used directly as OS filenames.
-        may break if key is an invalid os filename
     """
-    def __init__(self, max_size, path_prefix, decay_factor=0.9, static=True):
+    def __init__(self, 
+            max_size= 100, 
+            path_prefix="data/", 
+            decay_factor=0.9, 
+            static=True):
         self.max_size = max_size           # Maximum number of items to cache
         self.path_prefix = path_prefix     # Prefix for database path
         self.static = static               # Determines if the database is mutable
